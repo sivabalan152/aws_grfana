@@ -1,0 +1,86 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "cloudwatch"
+
+        }
+      }
+    ]
+  },
+  "panels": [
+    {
+      "datasource": {
+        "type": "cloudwatch"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "targets": [
+        {
+          "datasource": {
+            "type": "cloudwatch"
+          },
+          "expression": "fields @timestamp, @message |\n filter @message like 'error' |\n stats count()",
+          "id": "",
+          "label": "",
+          "logGroups": [
+            {
+              "arn": "$query",
+              "name": "$query"
+            }
+          ],
+          "matchExact": true,
+          "metricEditorMode": 0,
+          "metricName": "",
+          "metricQueryType": 0,
+          "namespace": "",
+          "period": "",
+          "queryMode": "Logs",
+          "refId": "A",
+          "region": "ap-southeast-2",
+          "sqlExpression": "",
+          "statistic": "Average",
+          "statsGroups": []
+        }
+      ],
+      "title": "Panel Title",
+      "type": "stat"
+    }
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "/aws/lambda/test",
+          "value": "arn:aws:logs:ap-southeast-2:852521841341:log-group:/aws/lambda/test:*"
+        },
+        "datasource": {
+          "type": "cloudwatch"
+        },
+        "query": {
+          "logGroupPrefix": "",
+          "queryType": "logGroups",
+          "refId": "CloudWatchVariableQueryEditor-VariableQuery",
+          "region": "ap-southeast-2"
+        },
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "New dashboard",
+  "version": 1,
+  "weekStart": ""
+}
